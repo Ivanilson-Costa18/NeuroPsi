@@ -12,4 +12,21 @@ router.get('/', async function(req,res,next){
       });
 })
 
+router.get('/:testID/figures', async function(req, res, next){
+  let id_test = req.params.testID
+  let figure = await mTests.getFigure(id_test)
+  figure.length > 0 ? res.status(200).send(figure) : res.status(404).json({
+    "status":404,
+    "error":"Not Found",
+    "message":"The requested resource does not exist",
+    "detail": "This test does not contain figures"
+  });
+})
+
+router.post('/',async function(req,res,next){
+  let newTest = req.body
+  let test = await mTests.createTest(newTest);
+  res.status(200).send(test)
+})
+
 module.exports = router

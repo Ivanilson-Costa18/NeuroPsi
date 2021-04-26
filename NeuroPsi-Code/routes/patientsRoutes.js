@@ -8,8 +8,30 @@ router.get('/', async function(req,res,next){
         "status":404,
         "error":"Not Found",
         "message":"The requested resource does not exist",
-        "detail": "There are no tests"
+        "detail": "There are no patients"
       });
+})
+
+router.get('/:patientID', async function(req,res,next){
+  let id_patient = req.params.patientID
+  let patient = await mPatients.getPatient(id_patient)
+  patient.length > 0 ? res.status(200).send(patient) : res.status(404).json({
+    "status":404,
+    "error":"Not Found",
+    "message":"The requested resource does not exist",
+    "detail": "This patient doesn't exist"
+  });
+})
+
+router.get('/:patientID/tests', async function(req,res,next){
+  let id_patient = req.params.patientID
+  let tests = await mPatients.getTests(id_patient)
+  tests.length > 0 ? res.status(200).send(tests) : res.status(404).json({
+    "status":404,
+    "error":"Not Found",
+    "message":"The requested resource does not exist",
+    "detail": "No tests were assigned"
+  });
 })
 
 module.exports = router

@@ -1,8 +1,23 @@
 body {
-  padding: 50px;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#header{
+  background-color: red;
+  height: 20%;
 }
+
+#main{
+  padding: 5%;
+  background-color: royalblue;
+  height: auto;
+}
+
+#footer{
+  background-color: springgreen;
+  height: 20%;
+}
+
+
+

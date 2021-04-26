@@ -10,4 +10,52 @@ module.exports.getAllDoctors = async function() {
         return error
     }
 
-} 
+}
+
+module.exports.getPatients = async function(id_doctor){
+    try {
+        const sql = 'SELECT * FROM User WHERE ID_User = (SELECT ID_User_Patient FROM Patient WHERE ID_Doctor_Patient = ?)'
+        let patients = await pool.query(sql,[id_doctor])
+        return patients
+    } catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+module.exports.getDoctor = async function(id_doctor){
+    try {
+        const sql = 'SELECT * FROM User WHERE ID_User = (SELECT ID_User_Doctor FROM Doctor WHERE ID_Doctor = ?)'
+        let doctor = await pool.query(sql,[id_doctor])
+        return doctor
+    } catch (error) {
+        console.log(error);
+        return error
+        
+    }
+}
+
+module.exports.getPatientsTests = async function(id_doctor){
+    try {
+        const sql = 'SELECT * FROM Test_Patient WHERE ID_Patient = (SELECT ID_Patient FROM Patient WHERE ID_Doctor_Patient = ?)'
+        let patients_tests = await pool.query(sql,[id_doctor])
+        return patients_tests
+    } catch (error) {
+        console.log(error);
+        return error
+    }
+}
+
+module.exports.createPatient = async function(patient_obj, id_doctor){
+    try {
+        const sql = 'INSERT INTO User(name_User, userName_User, password_User, email_User, tel_User) VALUES (?,?,?,?,?)'
+        let user = await pool.query(sql,[patient_obj.name, patient_obj.username, patient_obj.password, patient_obj.email, patient_obj.tel])
+
+        const sql2 = 'INSERT INTO Patient(ID_User_Patient, ID_Doctor_Patient) VALUES (?,?)'
+        let patient = await pool.query(sql,[id_user, id_doctor])
+    } catch (error) {
+        console.log(error);
+        return error
+    }
+}
+

@@ -2,10 +2,10 @@ const util = require('util')
 const mysql = require('mysql')
 const pool = mysql.createPool({
  connectionLimit: 20,
-  host: 'db4free.net',
-  user: 'neuropsidb',
-  password: 'Portugal2021',
-  database: 'neuropsidb',
+  host: 'remotemysql.com',
+  user: 'gwGW6Whkdm',
+  password: '2vd2WD7fJ3',
+  database: 'gwGW6Whkdm',
   port: 3306
 })
 
