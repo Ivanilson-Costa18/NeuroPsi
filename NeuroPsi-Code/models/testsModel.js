@@ -1,5 +1,7 @@
 const pool = require('./connection.js');
 
+
+//Get all test types from database
 module.exports.getAllTests = async function() {
     try {
         const sql = 'SELECT * FROM Test_Type'
@@ -12,6 +14,7 @@ module.exports.getAllTests = async function() {
 
 } 
 
+//Assign new test to a certain user
 module.exports.createTest = async function(test_obj){
     try {
         const sql = 'INSERT INTO Test_Patient(ID_Patient, Test_Type) VALUES (?,?)'
@@ -22,6 +25,7 @@ module.exports.createTest = async function(test_obj){
     }
 }
 
+//Get figure associated to one test
 module.exports.getFigure = async function(id_test){
     try {
         const sql = 'SELECT * FROM Figure WHERE ID_TestPatient = ?'

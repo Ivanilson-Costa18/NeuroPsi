@@ -2,6 +2,7 @@ var express  = require('express');
 var router = express.Router()
 var mPatients = require('../models/patientsModel');
 
+/*Get all patients*/
 router.get('/', async function(req,res,next){
     let patients = await mPatients.getAllPatients()
     patients.length > 0 ? res.status(200).send(patients) : res.status(404).json({
@@ -12,6 +13,7 @@ router.get('/', async function(req,res,next){
       });
 })
 
+/*Get patient information*/
 router.get('/:patientID', async function(req,res,next){
   let id_patient = req.params.patientID
   let patient = await mPatients.getPatient(id_patient)
@@ -23,6 +25,7 @@ router.get('/:patientID', async function(req,res,next){
   });
 })
 
+/*Get test assigned to the patient*/
 router.get('/:patientID/tests', async function(req,res,next){
   let id_patient = req.params.patientID
   let tests = await mPatients.getTests(id_patient)

@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  #header{
+    height: 20%;
+  }
+  
+
+  .logo-container{
+    padding-top:2.5%;
+    padding-left: 3%;
+    width: 15%;
+    height: 80%;
+  }
+
+  #logo{
+    width: 16rem;
+    height: 6rem;
+  }
+  
+  #main{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5%;
+    height: auto;
+  }
+
+  #userInfo{
+  }
+
+  #testsList{
+  }
+  
+  #footer{
+    height: 20%;
+  }

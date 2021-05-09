@@ -2,6 +2,7 @@ var express  = require('express');
 var router = express.Router()
 var mTests = require('../models/testsModel');
 
+/*Get all test types available in the platform*/
 router.get('/', async function(req,res,next){
     let tests = await mTests.getAllTests()
     tests.length > 0 ? res.status(200).send(tests) : res.status(404).json({
@@ -12,6 +13,7 @@ router.get('/', async function(req,res,next){
       });
 })
 
+/*Get figure associated with the test*/
 router.get('/:testID/figures', async function(req, res, next){
   let id_test = req.params.testID
   let figure = await mTests.getFigure(id_test)
@@ -23,6 +25,7 @@ router.get('/:testID/figures', async function(req, res, next){
   });
 })
 
+/*Send data for test cration*/
 router.post('/',async function(req,res,next){
   let newTest = req.body
   let test = await mTests.createTest(newTest);

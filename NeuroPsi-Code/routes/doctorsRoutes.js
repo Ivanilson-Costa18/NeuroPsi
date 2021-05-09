@@ -2,6 +2,7 @@ var express  = require('express');
 var router = express.Router()
 var mDoctors = require('../models/doctorsModel');
 
+/*Get all doctors*/
 router.get('/', async function(req,res,next){
     let doctors = await mDoctors.getAllDoctors()
     doctors.length > 0 ? res.status(200).send(doctors) : res.status(404).json({
@@ -12,6 +13,7 @@ router.get('/', async function(req,res,next){
       });
 })
 
+/* Get all patients from a specific doctor*/
 router.get('/:doctorID/patients', async function(req,res,next){
   let id_doctor = req.params.doctorID  
   let patients = await mDoctors.getPatients(id_doctor)
@@ -23,6 +25,7 @@ router.get('/:doctorID/patients', async function(req,res,next){
   });
 })
 
+/*Get doctor information*/
 router.get('/:doctorID', async function(req, res, next){
   let id_doctor = req.params.doctorID
   let doctor = await mDoctors.getDoctor(id_doctor)
@@ -34,6 +37,7 @@ router.get('/:doctorID', async function(req, res, next){
   });
 })
 
+/*Get tests assigned to doctor's patientsP*/
 router.get('/:doctorID/patients/tests', async function(req, res, next){
   let id_doctor = req.params.doctorID
   let tests = await mDoctors.getPatientsTests(id_doctor)
@@ -45,6 +49,7 @@ router.get('/:doctorID/patients/tests', async function(req, res, next){
   });
 })
 
+/*Send data to create a new patient*/
 router.post('/:doctorID/patients', async function(req, res, next){
   let id_doctor = req.params.doctorID
   let newPatient = req.body

@@ -1,56 +1,21 @@
-window.onload = function() { 
+var serializedJSON
+window.onload = async function(){
+    let figure = await $.ajax({
+        url: 'api/tests/1/figures',
+        method: 'get',
+        dataType: 'json'
+    })   
+    serializedJSON = figure[figure.length-1].FigureJSON
+    let drawing = new RecordableDrawing("canvas1");
+
+    $("#playBtn").click(function(){
+        var result = deserializeDrawing(serializedJSON);
+        drawing.recordings = result;
+            for (var i = 0; i < result.length; i++)
+                result[i].drawing = drawing;
+            playRecordings();
+    })
 	
-	$(document).ready(function()
-	{
-		$("#pauseBtn").hide();
-		$("#playBtn").hide();
-		
-		drawing = new RecordableDrawing("canvas1");
-		
-		$("#startBtn").click(function(){
-			startRecording();
-		});
-
-		$("#completeBtn").click(function(){
-			stopRecording();
-		})
-	
-		/*
-		$("#playBtn").click(function(){
-			var btnTxt = $("#playBtn").prop("value");
-			if (btnTxt == 'Stop')
-				stopPlayback();
-			else
-				startPlayback();			
-		});
-		
-
-		$("#pauseBtn").click(function(){
-			var btnTxt = $("#pauseBtn").prop("value");
-			if (btnTxt == 'Pause')
-			{
-				pausePlayback();
-			} else if (btnTxt == 'Resume')
-			{
-				resumePlayback();
-			}
-		});
-		
-        $("#clearBtn").click(function(){
-			drawing.clearCanvas();
-			document.getElementById("text").innerHTML = ""			
-		});
-
-        $("#desBtn").click(function(){
-            var result = deserializeDrawing(serResult);
-            drawing.recordings = result;
-				for (var i = 0; i < result.length; i++)
-					result[i].drawing = drawing;
-				playRecordings();
-        })
-		*/
-	});
-	/*
     function playRecordings()
 		{
 			if (drawing.recordings.length == 0)
@@ -58,29 +23,8 @@ window.onload = function() {
 				alert("No recording to play");
 				return;
 			}
-			var btnTxt = $("#playBtn").prop("value");
-			if (btnTxt == 'Stop')
-				stopPlayback();
-			else
 				startPlayback();			
 		}
-	*/
-	async function stopRecording()
-	{
-		drawing.stopRecording();
-        let actionsSet = serializeDrawing(drawing)
-		confirm('Finish?') ? figure = await $.ajax({
-			url: 'api/figures/',
-			method: 'post',
-			dataType: 'json',
-			data: {"testID": 1, "figureActions": actionsSet}
-		}) : drawing.clearCanvas();
-	}
-	
-	function startRecording()
-	{	
-		drawing.startRecording();
-	}
 	
 	function stopPlayback()
 	{
@@ -542,3 +486,4 @@ ActionsSet = function (interalArg, actionsArrayArg)
 	this.interval = interalArg;
 	this.next = null;
 }
+

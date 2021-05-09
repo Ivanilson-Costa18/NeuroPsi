@@ -6,6 +6,7 @@ var logger = require('morgan');
 var patientsRouter = require('./routes/patientsRoutes');
 var doctosrRouter = require('./routes/doctorsRoutes');
 var testsRouter = require('./routes/testsRoutes');
+var figuresRouter = require('./routes/figureRoutes');
 
 var app = express();
 
@@ -18,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/patients', patientsRouter);
 app.use('/api/doctors', doctosrRouter);
 app.use('/api/tests', testsRouter);
-
+app.use('/api/figures', figuresRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');

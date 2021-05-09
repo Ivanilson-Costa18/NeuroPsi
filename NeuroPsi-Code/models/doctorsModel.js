@@ -1,5 +1,6 @@
 const pool = require('./connection.js');
 
+//Get all doctors from database
 module.exports.getAllDoctors = async function() {
     try {
         const sql = 'SELECT * FROM Doctor'
@@ -12,6 +13,7 @@ module.exports.getAllDoctors = async function() {
 
 }
 
+// Get all patients associated with a doctor from database
 module.exports.getPatients = async function(id_doctor){
     try {
         const sql = 'SELECT * FROM User WHERE ID_User = (SELECT ID_User_Patient FROM Patient WHERE ID_Doctor_Patient = ?)'
@@ -23,6 +25,7 @@ module.exports.getPatients = async function(id_doctor){
     }
 }
 
+//Get doctor's info from database
 module.exports.getDoctor = async function(id_doctor){
     try {
         const sql = 'SELECT * FROM User WHERE ID_User = (SELECT ID_User_Doctor FROM Doctor WHERE ID_Doctor = ?)'
@@ -35,6 +38,7 @@ module.exports.getDoctor = async function(id_doctor){
     }
 }
 
+//Get tests assigned by the doctor from database
 module.exports.getPatientsTests = async function(id_doctor){
     try {
         const sql = 'SELECT * FROM Test_Patient WHERE ID_Patient = (SELECT ID_Patient FROM Patient WHERE ID_Doctor_Patient = ?)'
@@ -46,6 +50,7 @@ module.exports.getPatientsTests = async function(id_doctor){
     }
 }
 
+//Insert a new patient to the database
 module.exports.createPatient = async function(patient_obj, id_doctor){
     try {
         const sql = 'INSERT INTO User(name_User, userName_User, password_User, email_User, tel_User) VALUES (?,?,?,?,?)'

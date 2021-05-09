@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  #header{
+    background-color: red;
+    height: 20%;
+  }
+  
+  #main{
+    padding: 3%;
+    background-color: royalblue;
+    height: auto;
+  }
+
+  #userInfo{
+    background-color: lightskyblue;
+  }
+
+  #testsList{
+    background-color: mediumturquoise;
+  }
+  
+  #footer{
+    background-color: springgreen;
+    height: 20%;
+  }
