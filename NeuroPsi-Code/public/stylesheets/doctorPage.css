@@ -1,28 +1,272 @@
 body {
     margin: 0;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px 'Quicksand', sans-serif;  
   }
   
   #header{
-    background-color: red;
-    height: 20%;
+    background-color: black;
+    opacity: 0.95;
+    padding-top: 20px;
+    height: 12%;
+    display: flex;
+  }
+  
+  .navigation-container{
+    width: 100%;
+    padding-top: 1.5%;
+    padding-left: 65%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #doctor{
+    margin-top: -0.5%;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .far{
+    padding-right: 20px;
+    color: white; 
+    font-size: 22px;
+  }
+
+  .far:hover{
+    cursor: pointer;
+    color: rgb(160, 160, 160);
+  }
+
+  .fas{
+    padding-left: 20px;
+    color: white; 
+    font-size: 22px;
+  }
+
+  .fas:hover{
+    cursor: pointer;
+    color: rgb(160, 160, 160);
+  }
+
+  .logo-container{
+    margin-top: -0.5%;
+    padding-left: 3%;
+  }
+  
+  #logo{
+    width: 12rem;
+    height: 4.8rem;
   }
   
   #main{
-    padding: 3%;
-    background-color: royalblue;
-    height: auto;
+    background-color: rgb(240, 240, 240);
+    height: 88%;
   }
 
-  #userInfo{
-    background-color: lightskyblue;
+  .tabs{
+    margin: 0.5%;
+    height: 10%;
+    background: transparent none repeat scroll 0 0;    
+    box-shadow:
+    0 0 2.2px rgba(0, 0, 0, 0.1),
+    0 0 2.3px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 2.9px rgba(0, 0, 0, 0.1),
+    0 0 2.4px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.1);
   }
 
-  #patientsList{
-    background-color: mediumturquoise;
+  .tabs button{
+    margin-right: -4px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    height: 100%;
+    width: 9%;
+  }
+
+  .tabs .select{
+    background: rgba(0,0,0,0) linear-gradient(45deg,#96d0ff 30%,#61bdff 100%);
+  }
+
+  #dmsTab{
+    margin-left: 64%;
+  }
+
+  .tabs button:hover{
+    background: rgba(0,0,0,0) linear-gradient(45deg,#96d0ff 30%,#61bdff 100%);
+    cursor: pointer;
   }
   
+  #patientsList{
+    margin: 0.5%;
+    height: 80%;
+    display: flex;
+  }
+
+  #patientInfo{
+    height: 100%;
+    width: 25%;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 
+    0 0 2.2px rgba(0, 0, 0, 0.1),
+    0 0 2.3px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 2.9px rgba(0, 0, 0, 0.1),
+    0 0 2.4px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.1);;
+  }
+
+  #assistant-icon{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 25%;
+    height: 55%;
+    margin-bottom: auto;
+  }
+
+  #assistant-speech{
+    margin-top: -60%;
+    margin-left: 45%;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    width: 40%;
+  }
+
+  #icon{
+    display: block;
+    color: #000a50;
+    font-size: 250px;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  #icon:hover{
+    cursor: default;
+  }
+
+  #assignTestBtn{
+    border: none;
+    border-radius: 2px;
+    padding: 15px;
+    font-size: 1rem;
+    margin-left: 32%;
+    background-color: rgb(136 146 255 / 35%);  }
+
+  #assignTestBtn:hover{
+    cursor: pointer;
+    background-color: rgb(136 146 255 / 85%);
+  }
+  
+  #listSection{
+    height: 100%;
+    width: 75%;
+    margin-left: 0.5%;
+  }
+
+  .list td, th{
+    text-align: center;
+    padding: 10px;
+  }
+
+  .list thead th{
+    top: 0;
+    z-index: 1;
+    position: sticky;
+    background-color: rgb(219, 218, 218);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .list td{
+    font-size: 0.9rem;
+  }
+
+  .list tr:nth-child(2n){
+    background-color: #f8f8f8;
+  }
+
+  .list .line:hover{
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+  }
+
+  .list .clicked{
+    cursor: none;
+  }
+
+  .list .test-line:hover{
+    background-color: rgb(201, 201, 201);
+  }
+  
+  .list {
+    border-radius: 3px 3px 3px 3px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    background-color: white;
+    box-shadow: 
+    0 0 2.2px rgba(0, 0, 0, 0.1),
+    0 0 2.3px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 2.9px rgba(0, 0, 0, 0.1),
+    0 0 2.4px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+#testsList {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  margin: 0.5%;
+  height: 80%;
+  width: 99%;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 
+  0 0 2.2px rgba(0, 0, 0, 0.1),
+  0 0 2.3px rgba(0, 0, 0, 0.1),
+  0 0 2px rgba(0, 0, 0, 0.1),
+  0 0 2.9px rgba(0, 0, 0, 0.1),
+  0 0 2.4px rgba(0, 0, 0, 0.1),
+  0 0 2px rgba(0, 0, 0, 0.1);;
+}
+
+::-webkit-scrollbar{
+  width: 5px;
+}
+
+::-webkit-scrollbar-track{
+  box-shadow: inset 0 0 5px rgb(190, 190, 190);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgb(202, 202, 202);
+  border-radius: 10px;
+}
+
+.viewTestBtn{
+  border: none;
+  border-radius: 2px;
+  background-color: rgb(130 201 255 / 15%);
+  padding: 10px;
+}
+
+.viewTestBtn:hover{
+  cursor: pointer;
+  background-color: rgb(130 201 255 / 85%);
+}
+
+.unsolved:hover{
+  cursor: not-allowed;
+}
+  
   #footer{
-    background-color: springgreen;
     height: 20%;
   }
+
+  

@@ -29,7 +29,7 @@ router.get('/:doctorID/patients', async function(req,res,next){
 router.get('/:doctorID', async function(req, res, next){
   let id_doctor = req.params.doctorID
   let doctor = await mDoctors.getDoctor(id_doctor)
-  doctor.length > 0 ? res.status(200).send(doctor) : res.status(404).json({
+  doctor.length > 0 ? res.status(200).send(doctor[0]) : res.status(404).json({
     "status":404,
     "error":"Not Found",
     "message":"The requested resource does not exist",

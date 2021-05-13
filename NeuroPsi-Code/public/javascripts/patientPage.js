@@ -1,3 +1,4 @@
+var patient_id = 1
 window.onload = async function(){
     let patient = await $.ajax({
         url: 'api/patients/1',
@@ -11,25 +12,44 @@ window.onload = async function(){
         dataType: 'json'
     })
 
-    showPatient(patient)
+    showPatient(patient[0])
     showTests(tests)
 }
 
 const showPatient = async patient => {
-    let elem = document.getElementById('userInfo');
-    let html = '<p>'+JSON.stringify(patient[0])+'</p>'
-    elem.innerHTML = html
+    document.getElementById('patient').innerHTML = patient.name_User
 }
 
 const showTests = async tests => {
-    let elem = document.getElementById('testsList')
+    let elem = document.getElementById('list-content')
     let html = ""
     for(let test of tests){
-        html += '<p onclick="solveTest()">'+JSON.stringify(test)+'</p>'
+        html += '<tr class="line">'+
+                    '<td>'+ test.ID_Test_Patient +'</td>'+
+                    '<td>'+ test.type_Test +'</td>'+
+                    '<td>'+ test.Date_Test_Patient.slice(0,test.Date_Test_Patient.indexOf("T")).split("-").reverse().join("/") +'</td>'+
+                    '<td><button class="solveTestBtn" onclick="solveTest('+test.ID_Test_Patient+')">Start Test</button></td>'+
+                '</tr>'
     }
-    elem.innerHTML = html
+    elem.innerHTML += html
+    tests.length < 10 ? elem.innerHTML += '<tr class="blank"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'.repeat(10-tests.length) : elem.innerHTML
 }
 
-const solveTest = () => {
+const solveTest = (id_test) => {
+    sessionStorage.setItem("id_test", id_test)
     window.location = 'testPage.html'
+}
+
+function openTab(evt, tabName) {
+    var i,tablinks,x;
+    x = document.getElementsByClassName("tab");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace("select", "");
+    }
+    document.getElementById(tabName).style.display = "";
+    evt.currentTarget.className += " select";
 }

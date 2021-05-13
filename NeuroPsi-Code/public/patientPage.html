@@ -1,21 +1,44 @@
 <html>
     <head>
         <title>NeuroPsi</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="./stylesheets/patientPage.css">
         <script src="./javascripts/patientPage.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header id="header">        
             <div class="logo-container">
-                <a href="./index.html"><img id="logo" src="./images/NeurioPsi - Logo.png"></a>
-            </div>
+                <a href="./"><img id="logo" src="./images/image (1).png"></a>
+                </div>
+                <section class="navigation-container">
+                    <i class="far fa-bell"></i>
+                    <p id="patient"></p>
+                    <i class="fas fa-bars"></i>
+                </section>
         </header>
         <main id="main">
-            <div id="userInfo">
+            <div class="tabs">
+                <button id="testsListTab" class="tablink select" onclick="openTab(event,'testsList')">TESTS</button>
+                <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
             </div>
-            <div id="testsList">
+            <div id="testsList" class="tab">
+                <table class="list">
+                    <thead>
+                    <tr>
+                        <th>Test ID</th>
+                        <th>Test Type</th>
+                        <th>Date</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody id="list-content">
+                    </tbody>
+                </table>
             </div>
+            <div id="dms" class="tab"></div>
         </main>
         <footer id="footer">
 

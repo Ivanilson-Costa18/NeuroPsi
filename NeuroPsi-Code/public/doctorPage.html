@@ -2,21 +2,71 @@
     <head>
         <title>NeuroPsi</title>
         <link rel="stylesheet" href="./stylesheets/doctorPage.css">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <script src="./javascripts/doctorPage.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header id="header">
-
+            <div class="logo-container">
+            <a href="./"><img id="logo" src="./images/image (1).png"></a>
+            </div>
+            <section class="navigation-container">
+                <i class="far fa-bell"></i>
+                <p id="doctor"></p>
+                <i class="fas fa-bars"></i>
+            </section>
         </header>
         <main id="main">
-            <div id="userInfo">
+            <div class="tabs">
+                <button id="patientsListTab" class="tablink select" onclick="openTab(event,'patientsList')">PATIENTS</button>
+                <button id="testsListTab" class="tablink" onclick="openTab(event,'testsList')">TESTS</button>
+                <button id="addPatientTab" class="tablink" onclick="openTab(event,'addPatient')">ADD PATIENT</button>
+                <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
             </div>
-            <div id="patientsList">
+            <div id="patientsList" class="tab">
+                <section id="patientInfo">
+                    <div id='assistant-help'>
+                        <img id="assistant-icon" src="./images/external-content.duckduckgo-removebg-preview.png">
+                        <p id="assistant-speech">Click on a patient to assign a test</p>    
+                    </div>                
+                </section>
+                <section id="listSection">
+                    <table class="list">
+                        <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                        </thead>
+                        <tbody id="list-content">
+                        </tbody>
+                    </table>
+                </section>
             </div>
+            <div id="testsList" class="tab" style="display: none;">
+                <table class="list">
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Test Type</th>
+                            <th>State</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testList-content">
+                    </tbody>
+                </table>
+            </div>
+            <div id="addPatient" class="tab" style="display: none;"><p></p></div>
+            <div id="dms" class="tab" style="display: none;"><p></p></div>
         </main>
         <footer id="footer">
-
+        
         </footer>
     </body>
 </html>

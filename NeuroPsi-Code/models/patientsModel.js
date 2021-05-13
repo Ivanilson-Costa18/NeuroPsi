@@ -27,7 +27,7 @@ module.exports.getPatient = async function(id_patient){
 //Get unsolved tests from a patient
 module.exports.getTests = async function(id_patient) {
     try {
-        const sql = 'SELECT * FROM Test_Patient WHERE ID_Patient = ? and state_Test_Patient = 2'
+        const sql = 'SELECT ID_Test_Patient, Date_Test_Patient, type_Test FROM Test_Patient, Test_Type WHERE ID_Patient = ? and state_Test_Patient = 2'
         let tests = await pool.query(sql,[id_patient])
         return tests
     } catch (error) {
