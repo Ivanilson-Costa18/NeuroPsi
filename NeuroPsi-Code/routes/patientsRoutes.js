@@ -17,12 +17,7 @@ router.get('/', async function(req,res,next){
 router.get('/:patientID', async function(req,res,next){
   let id_patient = req.params.patientID
   let patient = await mPatients.getPatient(id_patient)
-  patient.length > 0 ? res.status(200).send(patient) : res.status(404).json({
-    "status":404,
-    "error":"Not Found",
-    "message":"The requested resource does not exist",
-    "detail": "This patient doesn't exist"
-  });
+  patient.length > 0 ? res.status(200).send(patient) : res.status(404).send([]);
 })
 
 /*Get test assigned to the patient*/

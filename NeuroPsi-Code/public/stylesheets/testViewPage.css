@@ -4,20 +4,14 @@ body {
   }
   
   #header{
-    background-color: red;
     height: 20%;
   }
   
   #main{
-    display: flex;
-    justify-content: center;
-    padding: 5%;
-    background-color: royalblue;
     height: auto;
   }
   
   #footer{
-    background-color: springgreen;
     height: 20%;
   }
   

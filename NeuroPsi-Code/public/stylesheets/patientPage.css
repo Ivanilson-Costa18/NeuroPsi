@@ -108,6 +108,18 @@
     box-shadow: 0 0 2.2px rgb(0 0 0 / 10%), 0 0 2.3px rgb(0 0 0 / 10%), 0 0 2px rgb(0 0 0 / 10%), 0 0 2.9px rgb(0 0 0 / 10%), 0 0 2.4px rgb(0 0 0 / 10%), 0 0 2px rgb(0 0 0 / 10%);
   }
 
+  #empty-container{
+    position: absolute;
+    z-index: 2;
+    margin-top: 8%;
+    margin-left: 45%;
+  }
+
+  #empty{
+    width: 140px;
+    height: 150px;
+  }
+
 
   .list td, th{
     text-align: center;

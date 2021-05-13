@@ -1,13 +1,13 @@
 var patient_id = 1
 window.onload = async function(){
     let patient = await $.ajax({
-        url: 'api/patients/1',
+        url: 'api/patients/'+patient_id,
         method: 'get',
         dataType: 'json'
     }) 
 
     let tests = await $.ajax({
-        url: 'api/patients/1/tests',
+        url: 'api/patients/'+patient_id+'/tests',
         method: 'get',
         dataType: 'json'
     })
@@ -23,6 +23,12 @@ const showPatient = async patient => {
 const showTests = async tests => {
     let elem = document.getElementById('list-content')
     let html = ""
+
+    if(tests.length == 0){
+        document.getElementById('empty-container').style.display = "block" 
+        elem.innerHTML += '<tr class="blank"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'.repeat(10)
+    }
+
     for(let test of tests){
         html += '<tr class="line">'+
                     '<td>'+ test.ID_Test_Patient +'</td>'+
@@ -31,6 +37,7 @@ const showTests = async tests => {
                     '<td><button class="solveTestBtn" onclick="solveTest('+test.ID_Test_Patient+')">Start Test</button></td>'+
                 '</tr>'
     }
+    
     elem.innerHTML += html
     tests.length < 10 ? elem.innerHTML += '<tr class="blank"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'.repeat(10-tests.length) : elem.innerHTML
 }
