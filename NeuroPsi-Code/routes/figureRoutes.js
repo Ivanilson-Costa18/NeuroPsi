@@ -9,4 +9,10 @@ router.post('/', async function(req,res,next){
     res.status(200).send(figure) 
 })
 
+router.get('/:id_figure', async function(req,res,next){
+    let id = req.params.id_figure
+    let figure = await mFigures.getDefautlFigure(id)
+    res.status(200).send(figure)
+})
+
 module.exports = router

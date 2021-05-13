@@ -1,13 +1,3 @@
-body {
-    margin: 0;
-    font: 14px 'Quicksand', sans-serif;  
-  }
-  
-  #header{
-    height: 20%;
-  }
-  
-
   body {
     margin: 0;
     font: 14px 'Quicksand', sans-serif;  
@@ -143,7 +133,6 @@ body {
 
   .list .line:hover{
     background-color: rgb(201, 201, 201);
-    cursor: pointer;
   }
 
   .list .clicked{

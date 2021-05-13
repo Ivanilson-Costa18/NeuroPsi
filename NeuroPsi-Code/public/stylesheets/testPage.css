@@ -1,28 +1,90 @@
 body {
-    margin: 0;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
-  
-  #header{
-    background-color: red;
-    height: 20%;
-  }
-  
-  #main{
-    padding: 3%;
-    background-color: royalblue;
-    height: auto;
+  margin: 0;
+  font: 14px 'Quicksand', sans-serif;  
+}
+
+#main{
+    height: 100%;
+    background: rgba(0,0,0,0) radial-gradient(#bddffa 30%,#7590a0 100%);
   }
 
-  #userInfo{
-    background-color: lightskyblue;
+#play{
+  border: none;
+  font-size: 2rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  padding: 5%;
+  font-family: 'Quicksand', sans-serif;
+  background: radial-gradient(#7590a0 30%,#bddffa 100%);
   }
 
-  #testsList{
-    background-color: mediumturquoise;
-  }
-  
-  #footer{
-    background-color: springgreen;
-    height: 20%;
-  }
+#play:hover{
+  font-size: 2.1rem;
+  padding: 6%;
+  cursor: pointer;
+}
+
+#instructions{
+  height: 100%;
+  width: 100%;
+}
+
+#title{
+  padding-top: 2%;
+  text-align: center;
+}
+
+#description{
+  text-align: center;
+  font-size: 1.4rem;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#canvas-container{
+  height: 100%;
+}
+
+.canvas{
+  display: inline-block;
+  border: solid black;
+  margin-left: 25%;
+  margin-right: 25%;
+  background: transparent;
+}
+
+#next{
+  color: #f7e4ad;
+  position: absolute;
+  margin-top: -2%;
+  margin-left: 85%;
+  border: none;
+  background: no-repeat;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+#next:hover{
+  cursor: pointer;
+}
+
+#submitBtn{
+  display: inline-block;
+  margin-left: 85%;
+  margin-top: -5%;
+  border: none;
+  border-radius: 15px;
+  padding: 1%;
+  font-size: 1.1rem;
+  background: radial-gradient(#b3d4ee, #4d4c4c6b);
+}
+
+#submitBtn:hover{
+  cursor: pointer;
+  background: radial-gradient(#4d4c4c6b, #b3d4ee);
+}

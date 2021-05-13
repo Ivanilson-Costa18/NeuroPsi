@@ -29,12 +29,7 @@ router.get('/:patientID', async function(req,res,next){
 router.get('/:patientID/tests', async function(req,res,next){
   let id_patient = req.params.patientID
   let tests = await mPatients.getTests(id_patient)
-  tests.length > 0 ? res.status(200).send(tests) : res.status(404).json({
-    "status":404,
-    "error":"Not Found",
-    "message":"The requested resource does not exist",
-    "detail": "No tests were assigned"
-  });
+  res.status(200).send(tests)
 })
 
 module.exports = router

@@ -73,7 +73,7 @@ window.onload = function() {
 			url: 'api/figures/',
 			method: 'post',
 			dataType: 'json',
-			data: {"testID": 1, "figureActions": actionsSet}
+			data: {"testID": 0, "figureActions": actionsSet}
 		}) : drawing.clearCanvas();
 	}
 	
