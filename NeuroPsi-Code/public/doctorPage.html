@@ -3,6 +3,7 @@
         <title>NeuroPsi</title>
         <link rel="stylesheet" href="./stylesheets/doctorPage.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script src="./javascripts/drawHandlers/serializer.js"></script>
         <script src="./javascripts/doctorPage.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
@@ -19,51 +20,68 @@
             </section>
         </header>
         <main id="main">
-            <div class="tabs">
-                <button id="patientsListTab" class="tablink select" onclick="openTab(event,'patientsList')">PATIENTS</button>
-                <button id="testsListTab" class="tablink" onclick="openTab(event,'testsList')">TESTS</button>
-                <button id="addPatientTab" class="tablink" onclick="openTab(event,'addPatient')">ADD PATIENT</button>
-                <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
-            </div>
-            <div id="patientsList" class="tab">
-                <section id="patientInfo">
-                    <div id='assistant-help'>
-                        <img id="assistant-icon" src="./images/assistant.png">
-                        <p id="assistant-speech">Click on a patient to assign a test</p>    
-                    </div>                
-                </section>
-                <section id="listSection">
+            <div id="tabs-container">
+                <div class="tabs">
+                    <button id="patientsListTab" class="tablink select" onclick="openTab(event,'patientsList')">PATIENTS</button>
+                    <button id="testsListTab" class="tablink" onclick="openTab(event,'testsList')">TESTS</button>
+                    <button id="addPatientTab" class="tablink" onclick="openTab(event,'addPatient')">ADD PATIENT</button>
+                    <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
+                </div>
+                <div id="patientsList" class="tab">
+                    <section id="patientInfo">
+                        <div id='assistant-help'>
+                            <img id="assistant-icon" src="./images/assistant.png">
+                            <p id="assistant-speech">Click on a patient to assign a test</p>    
+                        </div>                
+                    </section>
+                    <section id="listSection">
+                        <table class="list">
+                            <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                            </tr>
+                            </thead>
+                            <tbody id="list-content">
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div id="testsList" class="tab" style="display: none;">
                     <table class="list">
                         <thead>
-                        <tr>
-                            <th>Patient ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                        </tr>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Test Type</th>
+                                <th>Issue Date</th>
+                                <th>Complete Date</th>
+                                <th>&nbsp;</th>
+                            </tr>
                         </thead>
-                        <tbody id="list-content">
+                        <tbody id="testList-content">
                         </tbody>
                     </table>
-                </section>
+                </div>
+                <div id="addPatient" class="tab" style="display: none;"><p></p></div>
+                <div id="dms" class="tab" style="display: none;"><p></p></div>
             </div>
-            <div id="testsList" class="tab" style="display: none;">
-                <table class="list">
-                    <thead>
-                        <tr>
-                            <th>Patient ID</th>
-                            <th>Name</th>
-                            <th>Test Type</th>
-                            <th>State</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                    </thead>
-                    <tbody id="testList-content">
-                    </tbody>
-                </table>
+            <div id="test-view" style="display: none;">
+                <div class="backSctn" onclick="goBack()">
+                    <i id="back-arrow" class="fas fa-arrow-left"></i>
+                    <input id="backBtn" type="button" value="BACK">
+                </div>
+                <div id="canvas-container">
+                    <canvas id="canvas1">
+                    </canvas>
+                    <div id="btn-container">
+                        <button id="playBtn" value="Play" class="controlBtn"><i class="fas fa-play control"></i></button>
+                        <button id="pauseBtn" value="Pause" class="controlBtn"><i class="fas fa-pause control"></i></button>
+                    </div>
+                </div>
             </div>
-            <div id="addPatient" class="tab" style="display: none;"><p></p></div>
-            <div id="dms" class="tab" style="display: none;"><p></p></div>
         </main>
         <footer id="footer">
         

@@ -264,6 +264,73 @@ body {
 .unsolved:hover{
   cursor: not-allowed;
 }
+
+#test-view{
+  height: 100%;
+}
+
+.backSctn{
+  position: absolute;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+#back-arrow{
+  float: left;
+  color: black;
+  font-size: 1rem;
+  margin-top: 2%;
+}
+
+#backBtn{
+  border: none;
+  text-decoration: underline;
+  float: left;
+  font-size: 0.9rem;
+}
+
+#back-arrow:hover, #backBtn:hover{
+  cursor: pointer;
+}
+
+#canvas-container{    
+  display: flex;
+  padding-left: 25%;
+  padding-top: 3%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+#btn-container{
+  display: flex;
+}
+
+.controlBtn{
+  padding: 5px;
+  width: 50%;
+  border: 1px solid #80808045;
+  background: #8b8f8e63;
+  border-top: none;
+}
+
+.controlBtn:hover{
+  background: #60636263;
+  cursor: pointer;
+}
+
+.control{
+  color: #000000bf;
+  margin-left: -5%;
+}
+
+.control:hover{
+  color: #000000bf;
+}
+
+#canvas1{
+  border: 1px solid black;
+}
   
   #footer{
     height: 20%;

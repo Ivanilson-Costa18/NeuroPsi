@@ -10,7 +10,7 @@ module.exports.getDefautlFigure = async function(id){
 module.exports.saveFigure = async function(figure_obj){
     const sql = 'INSERT INTO Figure(ID_TestPatient, FigureJSON) VALUES (?, ?)'
     let figure = await pool.query(sql, [figure_obj.testID, figure_obj.actions])
-    const sql2 = 'UPDATE Test_Patient SET state_Test_Patient = 1 WHERE ID_Test_Patient = ?'
+    const sql2 = 'UPDATE Test_Patient SET state_Test_Patient = 1, CompleteDate_Test_Patient = CURRENT_TIMESTAMP WHERE ID_Test_Patient = ?'
     let update = await pool.query(sql2, [figure_obj.testID])
     return figure
 }
