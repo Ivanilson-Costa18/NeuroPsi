@@ -1,4 +1,5 @@
 var patients
+var selected_patient
 
 window.onload = async function(){
     //Get doctor's info
@@ -89,6 +90,7 @@ const displayInfo = ID_Patient => {
 
 //Display form
 const assignTest = async id_patient => {
+    selected_patient = id_patient
     let modal = document.getElementById("form-modal");
     let btn = document.getElementById("assignTestBtn");
     let span = document.getElementsByClassName("close")[0];
@@ -120,40 +122,6 @@ const assignTest = async id_patient => {
     })
 
 
-    $('#sbtTest').click( async function(){
-        let radio_option = form.getElementsByClassName("radio")
-        let chosen_radio
-        for(let radio of radio_option){
-            radio.checked ? chosen_radio = Number(radio.value) : null
-        }
-
-        try {
-            await $.ajax({
-                url: 'api/tests',
-                method: 'post',
-                dataType: 'json',
-                data: {
-                    "patientID": id_patient,
-                    "testType": Number(types.value.slice(types.value.indexOf('n')+1, types.value.length)),
-                    "time": chosen_radio
-                }
-            })
-        } catch (err) {
-            console.log(err)
-        }
-        
-        modal.style.display = "none";
-        $('#types').empty()
-        $('.details').remove()
-
-    
-        $("#confirmation").fadeIn(4000)
-        $("#confirmation").fadeOut(1500);
-        
-        
-    })
-
-
     btn.onclick = function() {
         modal.style.display = "block";
     }
@@ -164,6 +132,38 @@ const assignTest = async id_patient => {
         $('.details').remove()
     }
 }
+
+const saveTest = async () => {
+    let radio_option = form.getElementsByClassName("radio")
+    let chosen_radio
+    for(let radio of radio_option){
+        radio.checked ? chosen_radio = Number(radio.value) : null
+    }
+
+    try{
+        await $.ajax({
+        url: 'api/tests',
+        method: 'post',
+        dataType: 'json',
+        data: {
+            "patientID": selected_patient,
+            "testType": Number(types.value.slice(types.value.indexOf('n')+1, types.value.length)),
+            "time": chosen_radio
+        }})
+    } catch (e){
+        console.log(e)
+    }
+    
+    let modal = document.getElementById("form-modal");
+    modal.style.display = "none";
+    $('#types').empty()
+    $('.details').remove()
+
+    $("#confirmation").fadeIn(4000)
+    $("#confirmation").fadeOut(1500);
+    
+}
+
 
 //Open test tab for visualization
 const viewTest = async test_id => {

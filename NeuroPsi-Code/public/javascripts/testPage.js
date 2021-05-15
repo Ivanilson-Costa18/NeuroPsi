@@ -52,7 +52,9 @@ const fullScreen = async () =>{
 }
 
 //Begin test and start recording
-const start = (time) => {
+const start = () => {
+	let time = sessionStorage.getItem("time");
+
     document.getElementById('instructions').style  = 'display: none'
     document.getElementById('canvas-container').style = 'display: block'
 	
@@ -67,8 +69,9 @@ const start = (time) => {
 	{	
 		drawing.startRecording();
 	}
-
-	if(time>0){
+	console.log(time);
+	if(time > 0){
+		console.log('here')
 		window.setTimeout('$( document ).ready(function() {'+
 							'setInterval(function(){'+
 							'opacity = $("#rey-figure").css("opacity");'+
@@ -81,8 +84,8 @@ const start = (time) => {
 							'$("#rf-disclaimer").css("opacity", opacity);'+
 							'}, 100);'+
 						'});',3000)//Change to time*1000 after demo
-		}
 	}
+}
 //Stop recording, serialize drawing, submit, redirect to profile
 const submitDrawing = async () => {
 	let id_test = sessionStorage.getItem('id_test')
