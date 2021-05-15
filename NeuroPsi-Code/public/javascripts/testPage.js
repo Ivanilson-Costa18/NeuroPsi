@@ -68,8 +68,8 @@ const start = (time) => {
 		drawing.startRecording();
 	}
 
-	
-	window.setTimeout('$( document ).ready(function() {'+
+	if(time>0){
+		window.setTimeout('$( document ).ready(function() {'+
 							'setInterval(function(){'+
 							'opacity = $("#rey-figure").css("opacity");'+
 							'opacity = Number(opacity) -0.01;'+
@@ -81,8 +81,8 @@ const start = (time) => {
 							'$("#rf-disclaimer").css("opacity", opacity);'+
 							'}, 100);'+
 						'});',3000)//Change to time*1000 after demo
-}
-
+		}
+	}
 //Stop recording, serialize drawing, submit, redirect to profile
 const submitDrawing = async () => {
 	let id_test = sessionStorage.getItem('id_test')
