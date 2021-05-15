@@ -38,7 +38,7 @@ const showTests = async tests => {
                     '<td>'+ test.ID_Test_Patient +'</td>'+
                     '<td>'+ test.type_Test +'</td>'+
                     '<td>'+ test.Date_Test_Patient.slice(0,test.Date_Test_Patient.indexOf("T")).split("-").reverse().join("/") +'</td>'+
-                    '<td><button class="solveTestBtn" onclick="solveTest('+test.ID_Test_Patient+')">Start Test</button></td>'+
+                    '<td><button class="solveTestBtn" onclick="solveTest('+test.ID_Test_Patient+','+test.Test_Time+')">Start Test</button></td>'+
                 '</tr>'
     }
     
@@ -47,8 +47,9 @@ const showTests = async tests => {
 }
 
 //On click, redirect to testPage 
-const solveTest = (id_test) => {
+const solveTest = (id_test, time) => {
     sessionStorage.setItem("id_test", id_test)
+    sessionStorage.setItem("time", time)
     window.location = 'testPage.html'
 }
 

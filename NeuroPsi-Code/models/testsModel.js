@@ -17,8 +17,8 @@ module.exports.getAllTests = async function() {
 //Assign new test to a certain user
 module.exports.createTest = async function(test_obj){
     try {
-        const sql = 'INSERT INTO Test_Patient(ID_Patient, Test_Type) VALUES (?,?)'
-        let test = await pool.query(sql,[test_obj.patientID, test_obj.testType])
+        const sql = 'INSERT INTO Test_Patient(ID_Patient, Test_Type, Test_Time) VALUES (?,?,?)'
+        let test = await pool.query(sql,[test_obj.patientID, test_obj.testType, test_obj.time])
     } catch (error) {
         console.log(error);
         return error

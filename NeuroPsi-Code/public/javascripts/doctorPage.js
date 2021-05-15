@@ -61,7 +61,7 @@ const showTests = tests =>{
                     '<td>'+ test.name_User +'</td>'+
                     '<td>'+ test.type_Test +'</td>'+
                     '<td>'+ test.Date_Test_Patient.slice(0,test.Date_Test_Patient.indexOf("T")).split("-").reverse().join("/") +'</td>';
-        html += test.CompleteDate_Test_Patient == null ? '<td>Waiting...</td>' : '<td>'+test.CompleteDate_Test_Patient.slice(0,test.CompleteDate_Test_Patient.indexOf("T")).split("-").reverse().join("/")+'</td>'
+        html += test.Test_State == 'unsolved' ? '<td>Waiting...</td>' : '<td>Complete</td>'
         html += test.Test_State == "unsolved" ? '<td><button class="viewTestBtn unsolved">Not Available</button></td></tr>' : '<td><button class="viewTestBtn" onclick="viewTest('+test.ID_Test_Patient+')">View Test</button></td></tr>';
                 
     }
@@ -73,6 +73,8 @@ const showTests = tests =>{
 //Display patient's info after click in the row
 const displayInfo = ID_Patient => {
     let elem  = document.getElementById('patientInfo')
+    document.getElementById('listSection').style.width = "75%"
+    elem.style.display = "block"
     elem.innerHTML = ""
     let html = ""
     for(let patient of patients){
@@ -90,8 +92,8 @@ const assignTest = async id_patient => {
     let modal = document.getElementById("form-modal");
     let btn = document.getElementById("assignTestBtn");
     let span = document.getElementsByClassName("close")[0];
+    let form = document.getElementsByClassName('form-content')[0]
     let types = document.getElementById('types')
-    let html = ""
 
     let typesList = await $.ajax({
         url: 'api/tests/',
@@ -99,17 +101,67 @@ const assignTest = async id_patient => {
         dataType: 'json'
     })
 
-    for(let type of typesList){
-        typesList.indexOf(type) == 0 ? html += '<option value="'+type.type_Test+'" selected>'+type.type_Test+'</option>' : html += '<option value="'+type.type_Test+'">'+type.type_Test+'</option>'
+    for(let i in  typesList){
+        types.innerHTML += i == 0 ?  '<option value="option'+(Number(i)+1)+'" selected>'+typesList[i].type_Test+'</option>' : '<option value="option'+(Number(i)+1)+'">'+typesList[i].type_Test+'</option>'
     }
-    types.innerHTML += html
+
+    for(let i in typesList){
+        form.innerHTML += i == 0 ? '<div id="option'+(Number(i)+1)+'" class="details">'+
+        '<input type="radio" class="radio" name="option" value="30">'+
+        '<label for="show&dis">Show for 30min and dissapear</label><br>'+//Test pourpose -> doctor will choose the time (after demo)
+        '<input type="radio" class="radio" name="option" value="0">'+
+        '<label for="permanent">Permanent</label><br></div>' : '<div id="option'+(Number(i)+1)+'" class="details" style="display:none;"><h1>Other Test Details</h1></div>'
+    }
+    
+    $('#option0').show();
+    $('#types').change(function () {
+        $('.details').hide();
+        $('#'+$(this).val()).show();
+    })
+
+
+    $('#sbtTest').click( async function(){
+        let radio_option = form.getElementsByClassName("radio")
+        let chosen_radio
+        for(let radio of radio_option){
+            radio.checked ? chosen_radio = Number(radio.value) : null
+        }
+
+        try {
+            await $.ajax({
+                url: 'api/tests',
+                method: 'post',
+                dataType: 'json',
+                data: {
+                    "patientID": id_patient,
+                    "testType": Number(types.value.slice(types.value.indexOf('n')+1, types.value.length)),
+                    "time": chosen_radio
+                }
+            })
+        } catch (err) {
+            console.log(err)
+        }
+        
+        modal.style.display = "none";
+        $('#types').empty()
+        $('.details').remove()
+
+    
+        $("#confirmation").fadeIn(4000)
+        $("#confirmation").fadeOut(1500);
+        
+        
+    })
+
 
     btn.onclick = function() {
-    modal.style.display = "block";
+        modal.style.display = "block";
     }
 
     span.onclick = function() {
-    modal.style.display = "none";
+        modal.style.display = "none";
+        $('#types').empty()
+        $('.details').remove()
     }
 }
 

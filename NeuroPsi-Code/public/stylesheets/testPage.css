@@ -46,6 +46,12 @@ body {
   padding-right: 5%;
 }
 
+#disclaimer{
+  margin-left: 6%;
+  font-size: 1.4rem;
+  color: #de0000;
+}
+
 #canvas-container{
   height: 100%;
 }
@@ -58,8 +64,16 @@ body {
   background: transparent;
 }
 
+#rf-disclaimer{
+  position: absolute;
+  margin-left: 40%;
+  margin-top: -10%;
+  font-size: 1.1rem;
+  opacity: 0;
+}
+
 #next{
-  color: #f7e4ad;
+  color: #ff0000;
   position: absolute;
   margin-top: -2%;
   margin-left: 85%;

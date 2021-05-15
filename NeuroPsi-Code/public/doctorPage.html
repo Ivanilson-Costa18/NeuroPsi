@@ -16,6 +16,8 @@
             </div>
             <!-- NOTIFICATION, DOC INFO, SETTING, LOG OUT -->
             <section class="navigation-container">
+                <a id="link1">How it works</a>
+                <a id ="link2">About Us</a>
                 <i class="far fa-bell"></i>
                 <p id="doctor"></p>
                 <i class="fas fa-bars"></i>
@@ -25,18 +27,14 @@
             <div id="tabs-container">
                 <!-- TABS BUTTONS -->
                 <div class="tabs">
-                    <button id="patientsListTab" class="tablink select" onclick="openTab(event,'patientsList')">PATIENTS</button>
-                    <button id="testsListTab" class="tablink" onclick="openTab(event,'testsList')">TESTS</button>
-                    <button id="addPatientTab" class="tablink" onclick="openTab(event,'addPatient')">ADD PATIENT</button>
-                    <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
+                    <button id="patientsListTab" class="tablink select" onclick="openTab(event,'patientsList')">Patients</button>
+                    <button id="testsListTab" class="tablink" onclick="openTab(event,'testsList')">Tests</button>
+                    <button id="addPatientTab" class="tablink" onclick="openTab(event,'addPatient')">Add patient</button>
+                    <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">Messages</button>
                 </div>
                 <!-- PATIENTS LIST TAB -->
                 <div id="patientsList" class="tab">
-                    <section id="patientInfo">
-                        <div id='assistant-help'>
-                            <img id="assistant-icon" src="./images/assistant.png">
-                            <p id="assistant-speech">Click on a patient to assign a test</p>    
-                        </div>                
+                    <section id="patientInfo">       
                     </section>
                     <section id="listSection">
                         <table class="list">
@@ -62,7 +60,7 @@
                                 <th>Name</th>
                                 <th>Test Type</th>
                                 <th>Issue Date</th>
-                                <th>Complete Date</th>
+                                <th>Status</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
@@ -102,8 +100,10 @@
                             </select>
                         </div>
                     </form>
+                    <button id="sbtTest">Submit</button>
                 </div>
             </div>
+            <div id="confirmation">Test has been assigned successfuly</div>
         </main>
         <footer id="footer">
         
