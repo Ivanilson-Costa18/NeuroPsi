@@ -16,7 +16,7 @@ module.exports.getAllDoctors = async function() {
 // Get all patients associated with a doctor from database
 module.exports.getPatients = async function(id_doctor){
     try {
-        const sql = 'SELECT * FROM User, Patient WHERE ID_User = (SELECT ID_User_Patient FROM Patient WHERE ID_Doctor_Patient = ?)'
+        const sql = 'SELECT * FROM User, Patient WHERE ID_User = ID_User_Patient AND ID_Doctor_Patient = ?'
         let patients = await pool.query(sql,[id_doctor])
         return patients
     } catch (error) {
@@ -41,7 +41,7 @@ module.exports.getDoctor = async function(id_doctor){
 //Get tests assigned by the doctor from database
 module.exports.getPatientsTests = async function(id_doctor){
     try {
-        const sql = 'SELECT ID_Test_Patient, ID_Patient, name_User, type_Test, Date_Test_Patient, CompleteDate_Test_Patient, Test_State FROM Test_Patient, Test_Type, Test_State, User WHERE ID_Patient = (SELECT ID_Patient FROM Patient WHERE ID_Doctor_Patient = ?) AND ID_User = (SELECT ID_User_Patient FROM Patient WHERE ID_Doctor_Patient = ?) AND ID_Test_State = state_Test_Patient'
+        const sql = 'SELECT ID_Test_Patient, Test_Patient.ID_Patient, name_User, type_Test, Date_Test_Patient, CompleteDate_Test_Patient, Test_State FROM Test_Patient, Test_Type, Test_State, User, Patient WHERE Test_Patient.ID_Patient = Patient.ID_Patient AND ID_User = ID_User_Patient AND ID_Test_State = state_Test_Patient AND Test_Type = ID_Test_Type AND ID_Doctor_Patient = ?'
         let patients_tests = await pool.query(sql,[id_doctor, id_doctor])
         return patients_tests
     } catch (error) {

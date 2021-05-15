@@ -12,14 +12,16 @@
     <body>
         <main id="main">
             <button id="play" onclick="fullScreen()">BEGIN</button>
+            <!-- INSTRUCTIONS SECTION -->
             <div id="instructions" style="display: none;">
                 <h1 id="title">Rey Complex Figure</h1>
                 <p id="description">The Rey–Osterrieth complex figure test (ROCF) is a neuropsychological assessment in which examinees are asked to reproduce a complicated line drawing. The examinee will be presented with a canvas were he will be able to draw the desired figure. When finished, the examinee must submit the figure and end the test. The test permits the evaluation of different functions, such as visuospatial abilities, memory, attention, planning, etc.</p>
-                <h4 style="padding-left: 5%;padding-top: 1%;font-size: 1.3rem;">Here's an example, when ready click "Start Test" at the bottom left of the page:</h4>
+                <h4 style="padding-left: 6%;padding-top: 3%;font-size: 1.3rem;">Here's an example, when ready click "Start Test" at the bottom left of the page:</h4>
                 <canvas id="canvas-example" class="canvas">
                 </canvas>
                 <button id="next" onclick="start()">Start Test</button>
             </div>
+            <!-- TEST SECTION -->
             <div id='canvas-container' style="display: none;">
                 <h1 id="title">Rey Complex Figure</h1>
                 <p id="description" style="padding-top: 1%;">Draw the following figure, when finished, click 'Submit'.</p>

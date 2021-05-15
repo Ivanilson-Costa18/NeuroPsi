@@ -37,7 +37,7 @@ router.get('/:doctorID', async function(req, res, next){
   });
 })
 
-/*Get tests assigned to doctor's patientsP*/
+/*Get tests assigned to doctor's patients*/
 router.get('/:doctorID/patients/tests', async function(req, res, next){
   let id_doctor = req.params.doctorID
   let tests = await mDoctors.getPatientsTests(id_doctor)

@@ -1,11 +1,13 @@
 var patient_id = 1
 window.onload = async function(){
+    //Get patient's info
     let patient = await $.ajax({
         url: 'api/patients/'+patient_id,
         method: 'get',
         dataType: 'json'
     }) 
 
+    //Get patient's tests
     let tests = await $.ajax({
         url: 'api/patients/'+patient_id+'/tests',
         method: 'get',
@@ -16,10 +18,12 @@ window.onload = async function(){
     showTests(tests)
 }
 
+//Display patient's info
 const showPatient = async patient => {
     document.getElementById('patient').innerHTML = patient.name_User
 }
 
+//Display tests
 const showTests = async tests => {
     let elem = document.getElementById('list-content')
     let html = ""
@@ -42,11 +46,13 @@ const showTests = async tests => {
     tests.length < 10 ? elem.innerHTML += '<tr class="blank"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>'.repeat(10-tests.length) : elem.innerHTML
 }
 
+//On click, redirect to testPage 
 const solveTest = (id_test) => {
     sessionStorage.setItem("id_test", id_test)
     window.location = 'testPage.html'
 }
 
+//Open tab on click
 function openTab(evt, tabName) {
     var i,tablinks,x;
     x = document.getElementsByClassName("tab");

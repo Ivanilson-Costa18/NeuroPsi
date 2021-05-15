@@ -9,7 +9,7 @@ router.get('/', async function(req,res,next){
         "status":404,
         "error":"Not Found",
         "message":"The requested resource does not exist",
-        "detail": "There are no tests"
+        "detail": "0 tests available"
       });
 })
 

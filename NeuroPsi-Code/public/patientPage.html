@@ -14,6 +14,7 @@
                 <a href="./"><img id="logo" src="./images/logo.png"></a>
                 </div>
                 <section class="navigation-container">
+                    <!-- NOTIFICATION, PATIENT INFO, SETTING, LOG OUT -->
                     <i class="far fa-bell"></i>
                     <p id="patient"></p>
                     <i class="fas fa-bars"></i>
@@ -21,9 +22,11 @@
         </header>
         <main id="main">
             <div class="tabs">
+                <!-- TABS BUTTONS -->
                 <button id="testsListTab" class="tablink select" onclick="openTab(event,'testsList')">TESTS</button>
                 <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
             </div>
+            <!-- TESTS LIST TAB -->
             <div id="testsList" class="tab">
                 <div id="empty-container" style="display: none;">
                     <img id="empty" src="./images/empty.jpg">
@@ -42,6 +45,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- MESSAGES TAB -->
             <div id="dms" class="tab"></div>
         </main>
         <footer id="footer">

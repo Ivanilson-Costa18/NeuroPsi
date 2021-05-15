@@ -76,14 +76,14 @@ input[type=button]:hover{
 }
 
 .arrow{
-  height: 3px;
-  width: 6px;
+  height: 0.5px;
+  width: 4px;
   border: solid white;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
   transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
+  margin-top: 5%;
 }
 
 .logo-container{

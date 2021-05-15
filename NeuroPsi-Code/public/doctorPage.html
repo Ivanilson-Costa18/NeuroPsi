@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="./stylesheets/doctorPage.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <script src="./javascripts/drawHandlers/serializer.js"></script>
+        <script src="./javascripts/drawHandlers/drawObject.js"></script>
         <script src="./javascripts/doctorPage.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
@@ -13,6 +14,7 @@
             <div class="logo-container">
             <a href="./"><img id="logo" src="./images/logo.png"></a>
             </div>
+            <!-- NOTIFICATION, DOC INFO, SETTING, LOG OUT -->
             <section class="navigation-container">
                 <i class="far fa-bell"></i>
                 <p id="doctor"></p>
@@ -21,12 +23,14 @@
         </header>
         <main id="main">
             <div id="tabs-container">
+                <!-- TABS BUTTONS -->
                 <div class="tabs">
                     <button id="patientsListTab" class="tablink select" onclick="openTab(event,'patientsList')">PATIENTS</button>
                     <button id="testsListTab" class="tablink" onclick="openTab(event,'testsList')">TESTS</button>
                     <button id="addPatientTab" class="tablink" onclick="openTab(event,'addPatient')">ADD PATIENT</button>
                     <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
                 </div>
+                <!-- PATIENTS LIST TAB -->
                 <div id="patientsList" class="tab">
                     <section id="patientInfo">
                         <div id='assistant-help'>
@@ -49,6 +53,7 @@
                         </table>
                     </section>
                 </div>
+                <!-- TESTS LIST TAB -->
                 <div id="testsList" class="tab" style="display: none;">
                     <table class="list">
                         <thead>
@@ -65,9 +70,12 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- ADD PATIENT TAB -->
                 <div id="addPatient" class="tab" style="display: none;"><p></p></div>
+                <!-- MESSAGES TAB -->
                 <div id="dms" class="tab" style="display: none;"><p></p></div>
             </div>
+            <!-- TEST VIEW TAB -->
             <div id="test-view" style="display: none;">
                 <div class="backSctn" onclick="goBack()">
                     <i id="back-arrow" class="fas fa-arrow-left"></i>
@@ -80,6 +88,20 @@
                         <button id="playBtn" value="Play" class="controlBtn"><i class="fas fa-play control"></i></button>
                         <button id="pauseBtn" value="Pause" class="controlBtn"><i class="fas fa-pause control"></i></button>
                     </div>
+                </div>
+            </div>
+            <!-- MODAL WINDOW -->
+            <div id="form-modal" class="modal">
+                <div id="form-container" class="modal-content">
+                    <h1 style="margin-left: 5%">Prescrição do teste</h1>
+                    <span class="close">&times;</span>
+                    <form id="form">
+                        <div class="form-content">
+                            <label for="fName" class="form-label">Test type:</label>
+                            <select name="testTypes" id="types">
+                            </select>
+                        </div>
+                    </form>
                 </div>
             </div>
         </main>

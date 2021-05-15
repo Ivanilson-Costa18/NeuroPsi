@@ -1,5 +1,6 @@
 var default_figure
 
+//Set page on full screen, Display instructions
 const fullScreen = async () =>{
     document.getElementById('main').requestFullscreen()
     document.getElementById('play').style = 'display: none'
@@ -48,6 +49,7 @@ const fullScreen = async () =>{
 	}
 }
 
+//Begin test and start recording
 const start = () => {
     document.getElementById('instructions').style  = 'display: none'
     document.getElementById('canvas-container').style = 'display: block'
@@ -65,7 +67,7 @@ const start = () => {
 	}
 }
 
-
+//Stop recording, serialize drawing, submit, redirect to profile
 const submitDrawing = async () => {
 	let id_test = sessionStorage.getItem('id_test')
 	drawing.stopRecording();
