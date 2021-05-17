@@ -1,12 +1,12 @@
 ![NeuroPsi Logo](https://github.com/Ivanilson-Costa18/NeuroPsi/blob/main/NeuroPsi-Code/public/images/logo.png?raw=true)
 <br> ![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fneuropsi2021.herokuapp.com%2F)            https://neuropsi2021.herokuapp.com/
-
+<br>
 # NeuroPsi
 
 O website que iremos construir tem como propósito o auxílio no diagnóstico de pacientes com patologias como a depressão, problemas de coordenação motora ou déficit de atenção; através da realização de testes neuropsicológicos.<br><br>
 No site, o médico será capaz de adicionar os seus pacientes, atribuir testes e visualizar testes gravados. Tudo sendo realizado remotamente dispensando a deslocação do médico e do paciente.
 
-<br><br>
+<br>
 
 ## Table of Contents
 1. [Highlights](#highlights)
