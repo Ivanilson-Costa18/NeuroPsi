@@ -1,4 +1,4 @@
-![NeuroPsi Logo](https://github.com/Ivanilson-Costa18/NeuroPsi/blob/main/NeuroPsi-Code/public/images/image%20(1).png?raw=true)
+![NeuroPsi Logo](https://github.com/Ivanilson-Costa18/NeuroPsi/blob/main/NeuroPsi-Code/public/images/logo.png?raw=true)
 <br> ![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fneuropsi2021.herokuapp.com%2F)            https://neuropsi2021.herokuapp.com/
 
 # NeuroPsi
