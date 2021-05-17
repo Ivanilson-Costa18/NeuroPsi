@@ -33,11 +33,11 @@ No site, o médico será capaz de adicionar os seus pacientes, atribuir testes e
 
 ### Second Delivery
   17.05.2021
-- [ ] Functional prototype
-- [ ] Website Structure
-- [ ] Documents update
-- [ ] 2º Picth
-- [ ] Presentation PPT
+- [X] Functional prototype
+- [X] Website Structure
+- [X] Documents update
+- [X] 2º Picth
+- [X] Presentation PPT
 
 ### Third Delivery
   27.06.2021
