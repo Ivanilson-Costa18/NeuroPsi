@@ -1,15 +1,15 @@
-var patient_id = 1
 window.onload = async function(){
+    let id = sessionStorage.getItem('id')
     //Get patient's info
     let patient = await $.ajax({
-        url: 'api/patients/'+patient_id,
+        url: 'api/patients/'+id,
         method: 'get',
         dataType: 'json'
     }) 
 
     //Get patient's tests
     let tests = await $.ajax({
-        url: 'api/patients/'+patient_id+'/tests',
+        url: 'api/patients/'+id+'/tests',
         method: 'get',
         dataType: 'json'
     })
@@ -20,7 +20,7 @@ window.onload = async function(){
 
 //Display patient's info
 const showPatient = async patient => {
-    document.getElementById('patient').innerHTML = patient.name_User
+    document.getElementById('patient').innerHTML = 'Hi, ' + patient.name_User.split(' ')[0]
 }
 
 //Display tests

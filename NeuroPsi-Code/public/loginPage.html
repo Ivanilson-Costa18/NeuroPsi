@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>NeuroPsi</title>
+  <link rel="icon" href="/images/favicon.svg" type="image/svg">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/loginPage.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./javascripts/authentication/login.js"></script>
+</head>
+
+<body>
+  <section id="loginSection">
+    <div class="sidebar">
+        <a href="/" style="color: white;"><img id="logo" src="./images/favicon.png" alt="Home Page"><p style="margin: -5% 5%;">Back to Home</p></a>
+    </div>
+    <div class="login-area">
+        <div class="login-container">
+            <h1 style="font-size: 2rem;">Log In</h1>
+            <div>
+                <span id="error"> Invalid email or password. Please try again.</span>
+                <div class="field">
+                    <label>E-mail</label>
+                    <input type="text" id="username" placeholder="Ex: example@example.xxx">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" id="password">
+                </div>
+                <p>Don't have an account? <a style="color: blue;text-decoration: underline;" href="registerPage.html">Sign Up</a></p>
+                <input type="button" id="login" onclick="login()" value="Log In">
+            </div>
+        </div>
+    </div>
+  </section>
+</body>
+
+</html>

@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('neuropsi-code:server');
 var http = require('http');
+var users = []
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = require('socket.io')(server)
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -88,3 +90,14 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+io.on('connection', (socket) => {
+  console.log("User connected " + socket.id);
+
+  socket.on("user_connected", (user) => {
+    users['user-'+user] = socket.id
+
+    io.emit("user_connected", user)
+  })
+
+})

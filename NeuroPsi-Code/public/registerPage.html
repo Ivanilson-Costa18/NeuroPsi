@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>NeuroPsi</title>    
+        <link rel="icon" href="/images/favicon.svg" type="image/svg">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="stylesheets/registerPage.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="./javascripts/authentication/register.js"></script>
+        <script src="./javascripts/authentication/emailVerify.js"></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html"><img id="logo" src="./images/logo-b.png"></a>
+            <h1>Sign Up</h1>
+        </header>
+        <div id="progress">
+            <div id="circle-1" class="circle active">1</div><p>My Profile</p>
+            <hr>
+            <div id="circle-2" class="circle">2</div><p style="margin-left: 29.7%;">My E-mail</p>
+            <hr>
+            <div id="circle-3" class="circle">3</div><p style="margin-left: 59%;">Verify E-mail</p>
+        </div>
+        <section id="1" class="activeSection">
+            <div class="field">
+                <label>First Name</label>
+                <input type="text" id="fname" placeholder="Ex: John">
+                <span id="fnameError" style="display: none;">first name</span>
+            </div>
+            <div class="field">
+                <label>Last Name</label>
+                <input type="text" id="lname" placeholder="Ex: Doe">
+                <span id="lnameError" style="display: none;">last name</span>
+                <div id="radio-btns">
+                    <label>I am...</label>
+                    <br>
+                    <br>
+                    <input type="radio" id="patient" name="class" value="patient">
+                    <label for="patient">Patient</label>
+                    <input type="radio" id="doctor" name="class" value="doctor" style="margin-left: 5%;">
+                    <label for="doctor">Doctor</label>
+                </div>
+                <span id="classError" style="display: none;">Class</span>
+        </section>
+        <section id="2">
+            <div class="field">
+                <label>E-mail</label>
+                <input type="text" id="email" placeholder="Ex: example@example.xxx">
+                <span id="emailError" style="display: none;">email</span>
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Must contain at least 8 characters.">
+                <span id="passError" style="display: none;">password</span>
+            </div>
+        </section>
+        <section id="3">
+            <div class="field">
+                <label>Verification Code:</label>
+                <input type="password" id="code" placeholder="Code sent to your email">
+                <span id="verificationError" style="display: none;">Verification</span>
+            </div>
+        </section>
+        <button id="next" onclick="changeSection()">Next</button>
+        <button id="submit" onclick="submit()" style="display: none;">Submit</button>
+    </body>
+</html>

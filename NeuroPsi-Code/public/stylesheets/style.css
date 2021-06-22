@@ -1,3 +1,7 @@
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font: 14px 'Quicksand', sans-serif;
@@ -38,7 +42,7 @@ a{
   font-size: 1.2rem;
 }
 
-#link3{
+#link{
   font-size: 1rem;
 }
 
@@ -63,10 +67,6 @@ input[type=button]:hover{
   background-color: rgb(163, 163, 163);
 }
 
-#signUpButton{
-  background-color: rgb(65, 65, 65);
-  margin-left: 5%;
-}
 
 #lngSelect{
   padding-top: 0.5%;
@@ -97,10 +97,8 @@ input[type=button]:hover{
 }
 
 #main{
-  background-image: url('../images/bgImage.jpg');
-  background-size: 100%;
-  background-repeat: no-repeat;
   min-height: 88%;
+  max-height: 88%;
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 15% 70% 15%;
@@ -110,7 +108,15 @@ input[type=button]:hover{
   '. . .';
 }
 
+#myVideo{
+  position: absolute;
+  object-fit: cover;
+  height: 85%;
+  width: 100%;
+}
+
 .content-description{
+  z-index: 1;
   grid-area: content-description;
 }
 
@@ -120,7 +126,7 @@ input[type=button]:hover{
   top:10%; 
   left:50%;
   font-size: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.274);
+  background-color: rgb(218 134 241 / 66%);
   padding-top: 1%;
   padding-bottom: 1%;
   padding-right: 2%;
@@ -129,6 +135,7 @@ input[type=button]:hover{
   border-radius: 50px 50px 50px 50px ;
   color: white;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 #register:hover{

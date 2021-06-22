@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>NeuroPsi</title>
+        <link rel="icon" href="/images/favicon.svg" type="image/svg">
         <link rel="stylesheet" href="./stylesheets/doctorPage.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <script src="./javascripts/drawHandlers/serializer.js"></script>
@@ -8,6 +9,8 @@
         <script src="./javascripts/doctorPage.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.socket.io/4.1.1/socket.io.min.js" integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a" crossorigin="anonymous"></script>
+        <script defer src="./javascripts/socket.io.js"></script>
     </head>
     <body>
         <header id="header">
@@ -34,13 +37,18 @@
                 </div>
                 <!-- PATIENTS LIST TAB -->
                 <div id="patientsList" class="tab">
-                    <section id="patientInfo">       
+                    <section id="patient-section">    
+                        <div id="search-patient-div">
+                            <input id="search-patient" placeholder="Search for patient... " onkeyup="patientFilter()">
+                        </div>
+                        <section id="patient-info">
+                            
+                        </section>
                     </section>
                     <section id="listSection">
-                        <table class="list">
+                        <table class="list" id="patientTable">
                             <thead>
                             <tr>
-                                <th>Patient ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -56,7 +64,6 @@
                     <table class="list">
                         <thead>
                             <tr>
-                                <th>Patient ID</th>
                                 <th>Name</th>
                                 <th>Test Type</th>
                                 <th>Issue Date</th>
@@ -69,9 +76,71 @@
                     </table>
                 </div>
                 <!-- ADD PATIENT TAB -->
-                <div id="addPatient" class="tab" style="display: none;"><p></p></div>
+                <div id="addPatient" class="tab" style="display: none;">
+                    <div id="card">
+                        <div id="head-card">
+                            <h1>Patient's Informartion</h1>
+                        </div>
+                        <div id="body-card">
+                            <h4 style="font-size: 1rem; margin: 1% 0 3% 5%;">Add a new patient</h4>
+                            <div id="add-content">
+                                <input class="newPatient" type="text" id="FName" placeholder="First Name">
+                                <span style="display: none;" id="errorFName">Please insert a name</span>
+                                <input class="newPatient" type="text" id="LName" placeholder="Last Name">
+                                <span style="display: none;" id="errorLName">Please insert a last name</span>
+                                <input class="newPatient" type="text" id="email" placeholder="Email">
+                                <span style="display: none;" id="errorEmail">Email is not valid</span>
+                                <input class="newPatient" type="password" id="password" placeholder="Password">
+                                <span style="display: none;" id="errorPassword">Password must be at least 6 characters long</span>
+                                <input class="newPatient" type="password" id="cpassword" placeholder="Confirm Password"> 
+                                <span style="display: none;" id="errorCPassword">Confirm password</span>  
+                                <span style="display: none;" id="matchPassword">Password does not match</span>                        
+                            </div>
+                            <button id="createPatientBtn" onclick="createPatient()">Create Patient</button>
+                        </div>
+                    </div>
+                    <div id="assistant-container">
+                        <img id="assistant2" style="height: 20rem;" title="Author: Eucalyp" src="./images/assistant2.png">
+                        <p style="font-size: 1rem;font-weight: 800;">Fill the form to create a patient</p></div>
+                    </div>
                 <!-- MESSAGES TAB -->
-                <div id="dms" class="tab" style="display: none;"><p></p></div>
+                <div id="dms" class="tab" style="display: none;">
+                    <div id="roomlist-container">
+                        <div id="search-area">
+                            <input type="text" id="search-input" placeholder="Search patient...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div id="roomslist">
+                            <div class="room">
+                                <div class="patient-icon">
+                                </div>
+                                <div class="roomLastMessage">
+                                    <p id="name" style="margin: 1% 0 0 0;">NAME</p>
+                                    <p id="last-message" style="margin: 1% 0 0 0;">Random message</p>
+                                </div>
+                                <div class="time">
+                                    12:22
+                                </div>
+                                <div class="border-bottom"></div>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div id="messages-container">
+                        <div id="room-header">
+                            <h2 style="    margin: 0; text-align: center;padding: 2% 0 0 0;">Chat with NAME</h2>
+                        </div>
+                        <div id="messages">
+                            <div class="message">
+                                <div class="sender"></div>
+                                <p class="message-text">Random Message</p>
+                            </div>
+                        </div>
+                        <div id="send-message-area">
+                            <input type="text" id="message-input" placeholder="Type message...">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- TEST VIEW TAB -->
             <div id="test-view" style="display: none;">

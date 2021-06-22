@@ -1,12 +1,12 @@
 const util = require('util')
 const mysql = require('mysql')
+
 const pool = mysql.createPool({
  connectionLimit: 20,
-  host: 'remotemysql.com',
-  user: 'gwGW6Whkdm',
-  password: '2vd2WD7fJ3',
-  database: 'gwGW6Whkdm',
-  port: 3306
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 })
 
 // Ping database to check for common exception errors.

@@ -1,0 +1,84 @@
+body{
+    margin: 0;
+    background-color: #cbcbcb2e;
+    overflow: hidden;
+    font: 14px 'Quicksand', sans-serif;
+}
+
+.sidebar{
+    background-image: url('../images/loginBanner.jpg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: 141%;
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+
+#logo{
+    width: 20%;
+    height: 10%;
+    margin: 5% 10%;
+}
+
+.login-area{
+    width: 75%;
+    height: 100%;
+    float: right;
+}
+
+.login-container{
+    width: 25%;
+    padding: 15% 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+.field label{
+    font-size: 1rem;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.field input[type="text"],.field input[type="password"]{
+    font-size: 1.1rem;
+    padding: 3%;
+}
+
+#error{
+    display: none;
+    border: 1px solid rgba(255, 0, 0, 0.932);
+    background-color: rgba(255, 0, 0, 0.15);    
+    color: red;
+    padding: 1%;   
+    margin-top: -6%;
+    margin-bottom: 2%;
+}
+
+#toRegister:hover{
+    cursor: pointer;
+}
+
+#login{
+    margin-top: 10%;
+    float: right;
+    height:3%;
+    width: 40%;
+    font-size: 1.5rem;
+    background-color: #00beff3b;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+#login:hover{
+    cursor: pointer;
+    font-size: 1.55rem;
+    background-color: #00bfff7e;
+}

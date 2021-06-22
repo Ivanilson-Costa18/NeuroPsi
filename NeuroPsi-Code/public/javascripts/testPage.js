@@ -69,9 +69,7 @@ const start = () => {
 	{	
 		drawing.startRecording();
 	}
-	console.log(time);
 	if(time > 0){
-		console.log('here')
 		window.setTimeout('$( document ).ready(function() {'+
 							'setInterval(function(){'+
 							'opacity = $("#rey-figure").css("opacity");'+

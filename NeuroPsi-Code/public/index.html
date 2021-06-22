@@ -1,11 +1,11 @@
-<html>
+<html lang="en">
 
 <head>
   <title>NeuroPsi</title>
+  <link rel="icon" href="/images/favicon.svg" type="image/svg">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <script src="./javascripts/homePage.js"></script>
 </head>
 
 <body>
@@ -14,20 +14,23 @@
       <img id="logo" src="./images/logo.png">
     </div>
     <section class="navigation-container">
-      <a id="link1">How it works</a>
-      <a id ="link2">About Us</a>
-      <input id="logInButton" type="button" onclick="window.location = '/patientPage.html'" value="Log In">
+      <a href="#footer">How it works</a>
+      <a href="#footer">About Us</a>
+      <input id="logInButton" type="button" onclick="window.location = 'loginPage.html'" value="Log In">
       <div id="lngSelect">
-        <a id ="link3" href="./doctorPage.html">English</a>
+        <a id ="link">English</a>
         <div class="arrow"></div>
       </div>
     </section>
   </header>
   <main id="main">
+    <video autoplay muted loop id="myVideo">
+      <source src="images/video.mp4" type="video/mp4">
+    </video>
     <div class="content-description">
       <h1>Neuropsychological Tests </h1>
       <p>NeuroPsi allows tests to be carried out remotely to measure the user's capabilities and also to monitor the results by the doctor.</p>
-      <button id="register">Join Us</button>
+      <button id="register" onclick="window.location = 'registerPage.html'">Join Us</button>
     </div>
   </main>
   <footer id="footer">
