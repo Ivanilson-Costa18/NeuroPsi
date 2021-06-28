@@ -1,33 +1,51 @@
 <html>
     <head>
-        <title>NeuroPsi</title>
+        <title>NeuroPsi | Test</title>
         <link rel="icon" href="/images/favicon.svg" type="image/svg">
-        <link rel="stylesheet" href="./stylesheets/testPage.css">
+        <link rel="stylesheet" href="./stylesheets/reyTestPage.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <script src="javascripts/drawHandlers/serializer.js"></script>
         <script src="./javascripts/drawHandlers/drawObject.js"></script>
-        <script src="./javascripts/testPage.js"></script>
+        <script src="./javascripts/reyTestPage.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <header id="header">
+            <div class="logo">
+                <a><img id="logo" src="./images/logo.png"></a>
+            </div>
+            <div id="title">
+                <h1 >Rey Figure Test</h1>
+            </div>
+            <div id="options">
+                <i class="fas fa-bars" style="font-weight: 900;font-size: 2rem;">
+                    <div id="options-container" style="display: none;">
+                        <div class="option" onclick="cancel()">
+                            <div class="option-content" >
+                                <p>Cancel Attempt</p>
+                            </div>
+                        </div>
+                    </div>
+                </i>
+            </div>
+        </header>
         <main id="main">
-            <button id="play" onclick="fullScreen()">BEGIN</button>
             <!-- INSTRUCTIONS SECTION -->
-            <div id="instructions" style="display: none;">
+            <div id="instructions">
                 <h1 id="title">Rey Complex Figure</h1>
                 <p id="description">The Rey–Osterrieth complex figure test (ROCF) is a neuropsychological assessment in which examinees are asked to reproduce a complicated line drawing. The examinee will be presented with a canvas were he will be able to draw the desired figure. When finished, the examinee must submit the figure and end the test. The test permits the evaluation of different functions, such as visuospatial abilities, memory, attention, planning, etc.</p>
                 <p id="disclaimer"></p>
-                <h4 style="padding-left: 6%;padding-top: 3%;font-size: 1.3rem;">Here's an example, when ready click "Start Test" at the bottom left of the page:</h4>
+                <h4 style=" margin: 2.5% 0 1% 0;padding-left: 6%;padding-top: 0%;font-size: 1.3rem;">Here's an example, when ready click "Start Test" at the bottom left of the page:</h4>
                 <canvas id="canvas-example" class="canvas">
                 </canvas>
-                <button id="next" onclick="start()">Start Test</button>
+                <button id="startBtn" onclick="start()">Start Test</button>
             </div>
             <!-- TEST SECTION -->
             <div id='canvas-container' style="display: none;">
                 <h1 id="title">Rey Complex Figure</h1>
                 <p id="description" style="padding-top: 1%;">Draw the following figure, when finished, click 'Submit'.</p>
-                <img id="rey-figure" src="./images/reyFigure.png" style="margin-bottom: 1%;margin-left: 44%;margin-right: 44%;width: 15%;">
+                <img id="rey-figure" src="./images/reyFigure.png" style="margin-bottom: 1%;margin-left: 45%;margin-right: auto;width: 15%;">
                 <p id="rf-disclaimer">The image is no longer available</p>
                 <canvas id="canvas1" class="canvas">
                 </canvas>

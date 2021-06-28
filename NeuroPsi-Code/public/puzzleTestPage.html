@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>NeuroPsi | Test</title>
+        <link rel="icon" href="/images/favicon.svg" type="image/svg">
+        <link rel="stylesheet" href="./stylesheets/puzzleTestPage.css">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+        <script src="./javascripts/boardHandlers/puzzle.js"></script>
+        <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    </head>
+    <body>
+        <header id="header">
+            <div class="logo">
+                <a><img id="logo" src="./images/logo.png"></a>
+            </div>
+            <div id="title">
+                <h1 >Puzzle Test</h1>
+            </div>
+            <div id="options">
+                <i class="fas fa-bars" style="font-weight: 900;font-size: 2rem;">
+                    <div id="options-container" style="display: none;">
+                        <div class="option" onclick="cancel()">
+                            <div class="option-content" >
+                                <p>Cancel Attempt</p>
+                            </div>
+                        </div>
+                    </div>
+                </i>
+            </div>
+        </header>
+        <div id="start-view">
+            <div id="test-description">
+                <h2>The puzzle test consist on moving tiles and giving the description according to what you see. For this test your doctor has chosen an image and wants you to describe what do you see on the available tile.</h2>
+            </div>
+            <h3 style="margin-inline-start: 5%;">On the board below click on a tile to move (when ready click on Start):</h3>
+            <div id="example">
+                <div id="board-example">
+                    <img id="image-example" style="width: 100%; height: 100%;">
+                </div>
+            </div>
+            <button id="startBtn">Start</button>
+        </div>
+        <div id="test-view" style="display: none;">
+            <h2 style="margin-inline-start: 5%;">The test has begun, please pass through all tiles and give a detailed description:</h2>
+            <div id="board-container">
+                <div id="board">
+                    <img id="image">
+                </div>
+            </div>
+            <button id="complete" onclick="completeTest()">Complete</button>
+        </div>
+    </body>
+</html>

@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('neuropsi-code:server');
 var http = require('http');
 var users = []
+var pool = require('../models/connection')
 
 /**
  * Get port from environment and store in Express.
@@ -91,13 +92,20 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-io.on('connection', (socket) => {
-  console.log("User connected " + socket.id);
 
+io.on('connection', (socket) => {
   socket.on("user_connected", (user) => {
     users['user-'+user] = socket.id
 
     io.emit("user_connected", user)
-  })
+  });
 
+  socket.on("send_message", async (data) => {
+    var socketId = users['user-'+data.receiver];
+    let name = await pool.query('SELECT name_User FROM User WHERE ID_User = ?', [data.sender])
+    let initial = name[0].name_User.split(' ')[0].charAt(0) + ' ' + name[0].name_User.split(' ')[1].charAt(0)
+    data.initial = initial
+    io.to(socketId).emit("new_message", data);
+    await pool.query('INSERT INTO Message (Receiver_ID_Message,Sender_ID_Message, Content_Message) VALUES (?,?,?)',[data.receiver, data.sender, data.message])
+  });
 })

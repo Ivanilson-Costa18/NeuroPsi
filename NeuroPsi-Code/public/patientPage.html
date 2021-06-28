@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>NeuroPsi</title>
+        <title>NeuroPsi | Patient</title>
         <link rel="icon" href="/images/favicon.svg" type="image/svg">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="./stylesheets/patientPage.css">
@@ -8,6 +8,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/2fc5575721.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.socket.io/4.1.1/socket.io.min.js" integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a" crossorigin="anonymous"></script>
+        <script defer src="./javascripts/socket.io.js"></script>
     </head>
     <body>
         <header id="header">        
@@ -26,8 +28,8 @@
         <main id="main">
             <div class="tabs">
                 <!-- TABS BUTTONS -->
-                <button id="testsListTab" class="tablink select" onclick="openTab(event,'testsList')">TESTS</button>
-                <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">MESSAGES</button>
+                <button id="testsListTab" class="tablink select" onclick="openTab(event,'testsList')">Tests</button>
+                <button id="dmsTab" class="tablink" onclick="openTab(event,'dms')">Messages<span style="display: none;" id="notification-ball" class="circle"></span></button>
             </div>
             <!-- TESTS LIST TAB -->
             <div id="testsList" class="tab">
@@ -49,7 +51,28 @@
                 </table>
             </div>
             <!-- MESSAGES TAB -->
-            <div id="dms" class="tab"></div>
+            <div id="dms" class="tab" style="display: none;">
+                <div id="roomlist-container">
+                    <div id="search-area">
+                        <input type="text" id="search-input" placeholder="Search patient...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div id="roomsList">
+                    </div>
+                </div>
+                <div id="messages-container">
+                    <div id="room-header">
+                        <h2 style="margin: 0; text-align: center;padding: 2% 0 0 0;" id="chat-title"></h2>
+                    </div>
+                    <div id="messages">
+                    </div>
+                    <div id="send-message-area">
+                        <input type="text" id="message-input" placeholder="Type message...">
+                        <i class="far fa-paper-plane" style="padding-left: 20px;padding-right: 0;" onclick="sendmessage('pat')"></i>
+                    </div>
+                </div>
+            </div>
+            </div>
         </main>
         <footer id="footer">
 

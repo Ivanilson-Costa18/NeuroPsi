@@ -11,7 +11,10 @@ var patientsRouter = require('./routes/patientsRoutes');
 var doctosrRouter = require('./routes/doctorsRoutes');
 var testsRouter = require('./routes/testsRoutes');
 var figuresRouter = require('./routes/figureRoutes');
+var movesRouter =  require('./routes/movesRoutes')
 var authenticationRouter = require('./routes/authenticationRoutes')
+var usersRouter = require('./routes/usersRoutes')
+var messagesRouter = require('./routes/messagesRoutes')
 
 var app = express();
 
@@ -22,17 +25,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var bodyParser = require('body-parser');
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
 
 app.use('/api/patients', patientsRouter);
 app.use('/api/doctors', doctosrRouter);
 app.use('/api/tests', testsRouter);
 app.use('/api/figures', figuresRouter);
+app.use('/api/moves', movesRouter);
 app.use('/api/authentication', authenticationRouter)
-
+app.use('/api/users', usersRouter)
+app.use('/api/messages', messagesRouter)
 
 app.use((req, res, next) => {
     const error = new Error('Not found');

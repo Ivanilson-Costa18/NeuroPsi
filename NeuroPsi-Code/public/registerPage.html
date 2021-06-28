@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="stylesheets/registerPage.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="./javascripts/authentication/register.js"></script>
-        <script src="./javascripts/authentication/emailVerify.js"></script>
+        <script src="./javascripts/authentication/submission.js"></script>
     </head>
     <body>
         <header class="header">
@@ -25,14 +25,14 @@
             <div class="field">
                 <label>First Name</label>
                 <input type="text" id="fname" placeholder="Ex: John">
-                <span id="fnameError" style="display: none;">first name</span>
+                <span id="fnameError" class="error" style="display: none;">Please provide a first name.</span>
             </div>
             <div class="field">
                 <label>Last Name</label>
                 <input type="text" id="lname" placeholder="Ex: Doe">
-                <span id="lnameError" style="display: none;">last name</span>
+                <span id="lnameError" class="error" style="display: none;">Please provide a last name.</span>
                 <div id="radio-btns">
-                    <label>I am...</label>
+                    <label>I am a...</label>
                     <br>
                     <br>
                     <input type="radio" id="patient" name="class" value="patient">
@@ -40,28 +40,39 @@
                     <input type="radio" id="doctor" name="class" value="doctor" style="margin-left: 5%;">
                     <label for="doctor">Doctor</label>
                 </div>
-                <span id="classError" style="display: none;">Class</span>
+                <span id="classError" class="error" style="display: none;">Please choose a class.</span>
         </section>
         <section id="2">
             <div class="field">
                 <label>E-mail</label>
                 <input type="text" id="email" placeholder="Ex: example@example.xxx">
-                <span id="emailError" style="display: none;">email</span>
+                <span id="emailError" class="error" style="display: none;">Please provide an email.</span>
             </div>
             <div class="field">
                 <label>Password</label>
                 <input type="password" id="password" placeholder="Must contain at least 8 characters.">
-                <span id="passError" style="display: none;">password</span>
+                <span id="passError" class="error" style="display: none;">Please provide a password.</span>
+                <span id="passError2" class="error" style="display: none;">Password must be 8 characters long.</span>
+            </div>
+            <div class="field">
+                <label>Phone Number</label>
+                <input type="text" id="phone" placeholder="Format: +XXXXXXXXXXXX">
+                <span id="phoneError" class="error" style="display: none;">Please provide a phone number</span>
+                <span id="phoneError2" class="error" style="display: none;">Invalid Format</span>
             </div>
         </section>
         <section id="3">
             <div class="field">
                 <label>Verification Code:</label>
                 <input type="password" id="code" placeholder="Code sent to your email">
-                <span id="verificationError" style="display: none;">Verification</span>
+                <button style=" position: absolute; margin: 3.5% 0% 0% 31%; padding: 0.5% 0.5% 0.5% 0.5%;" onclick="sendCode()">Send Code</button>
+                <span id="codeError" class="error" style="display: none;">The code is incorrect.</span>
+                <span id="emailError" class="error" style="display: none;">The provided email is invalid.</span>
+                <span id="emailError2" class="error" style="display: none;"></span>
             </div>
         </section>
-        <button id="next" onclick="changeSection()">Next</button>
+        <button id="back" style="margin-right: 70%;display: none;" onclick="back()">Back</button>
+        <button id="next" onclick="next()">Next</button>
         <button id="submit" onclick="submit()" style="display: none;">Submit</button>
     </body>
 </html>

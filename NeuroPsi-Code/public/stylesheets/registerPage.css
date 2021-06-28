@@ -1,6 +1,5 @@
 body{
     margin: 0;
-    background-color: #cbcbcb2e;
     overflow: hidden;
     font: 14px 'Quicksand', sans-serif;
 }
@@ -31,6 +30,10 @@ p{
     display: flex;
 }
 
+.error{
+    color: red;
+}
+
 hr{
     margin-top: 3%;
     height: 0;
@@ -44,12 +47,13 @@ hr{
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.301);
+    border: 1px solid black;
     border-radius: 50%;
     font-size: 1.2rem;
 }
 
 .active{
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(206 228 255);
 }
 
 section{
@@ -90,6 +94,7 @@ button{
     font-size: 1.3rem;
     padding: 0.5% 5% 0.5% 5%;
     margin: -5% 20%;
+    background-color: aliceblue;
 }
 
 button:hover{

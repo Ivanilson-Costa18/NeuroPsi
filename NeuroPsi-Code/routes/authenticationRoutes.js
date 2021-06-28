@@ -22,19 +22,20 @@ router.post('/login', async function(req, res, next){
                 console.log(error);
                 return error;
             }    
-            console.log(results)
-            if (!results || !(await bcrypt.compare(user.password, results[0].password_User))){
-                return res.status(401).send({
-                    "message": 'Email or password is incorrect'
-                });
-            } else {
+            if(!results[0]){
+                return res.status(401).send({"id": 0})
+                
+            } else if(!(await bcrypt.compare(user.password, results[0].password_User))){
+                return res.status(401).send({"id": 0})
+            }
+            else {
                  const id = results[0].ID_User
                 const token = jwt.sign({id}, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 })
 
                 const cookieOptions = {
-                    expires: new Date(
+                    maxAge: new Date(
                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
                     ),
                     httpOnly: true
@@ -44,13 +45,13 @@ router.post('/login', async function(req, res, next){
 
                 await pool.query('SELECT * FROM Doctor WHERE ID_User_Doctor = ?',[id], async (error, doctor) => {
                     if(doctor.length){ 
-                        return res.status(200).send({"id":doctor[0].ID_Doctor, "type": "doctor"})
+                        return res.status(200).send({"id":doctor[0].ID_Doctor, "id_user": id, "redirect": "doctorPage.html"})
                     }else{
-                        await pool.query('SELECT * FROM Patient WHERE ID_User_Patient = ?',[id], (error, patient) => {
+                        await pool.query('SELECT Patient.ID_Patient, Patient.ID_User_Patient, User.ID_User as \'ID_Doctor\' FROM User, Patient, Patient_Doctor, Doctor WHERE Patient_Doctor.ID_Patient = Patient.ID_Patient AND ID_User_Patient = ? AND Doctor.ID_Doctor = Patient_Doctor.ID_Doctor AND User.ID_User = Doctor.ID_User_Doctor',[id], (error, patient) => {
                             if(results){
-                                return res.status(200).send({"id":patient[0].ID_Patient, "type": "patient"})
+                                return res.status(200).send({"id":patient[0].ID_Patient, "id_doctor": patient[0].ID_Doctor, "id_user": id, "redirect": "patientPage.html"})
                             }else{ 
-                                return
+                                return 
                             }
                         })
                     } 
@@ -82,12 +83,10 @@ router.post('/register', async function(req, res, next){
         userData.password = await bcrypt.hash(userData.password, 8)
         if(userData.type == "doctor"){
             let newDoctor = await mDoctors.createDoctor(userData)
-            console.log(newDoctor);
             return res.status(200).send(newDoctor)
         } else {
             let newPatient = await mPatients.createPatient(userData)
-            console.log(newPatient);
-            return res.status(200).send(newDoctor)
+            return res.status(200).send(newPatient)
         }
     })
 })
@@ -118,6 +117,11 @@ router.post('/verify/:email',async (req,res,next) => {
     } else {
         return res.status(400).send({"message": "Email doesn't exist"})
     }               
+})
+
+router.get('/logout', function(req,res,next){
+    res.cookie('cookie4U', '', {maxAge: 1});
+    return res.status(200).send({"redirect": "index.html"})
 })
 
 module.exports = router
