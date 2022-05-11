@@ -3,8 +3,7 @@
 <br>
 # NeuroPsi
 
-O website que iremos construir tem como propósito o auxílio no diagnóstico de pacientes com patologias como a depressão, problemas de coordenação motora ou déficit de atenção; através da realização de testes neuropsicológicos.<br><br>
-No site, o médico será capaz de adicionar os seus pacientes, atribuir testes e visualizar testes gravados. Tudo sendo realizado remotamente dispensando a deslocação do médico e do paciente.
+The website that we will build has the purpose of helping in the diagnosis of patients with pathologies such as depression, motor coordination problems or attention deficit; through neuropsychological tests.<br><br>On the website, the doctor will be able to add their patients, assign tests and view recorded tests. Everything being carried out remotely, eliminating the need for the doctor and patient to travel.
 
 <br>
 
@@ -17,9 +16,9 @@ No site, o médico será capaz de adicionar os seus pacientes, atribuir testes e
 
 ## Highlights
 
-**Testes à distância** - O médico pode aplicar o teste em qualquer lugar desde que o paciente disponha de acesso à internet.<br>
-**Visualização de testes gravados** - O médico poderá rever os testes que podem ser gravados.<br>
-**Gestão de pacientes** - O médico terá acesso a toda informação necessária associada aos seus pacientes.<br>
+**Remote tests** - The doctor can apply the test anywhere as long as the patient has internet access.<br>
+**Preview of recorded tests** - The doctor will be able to review the tests that can be recorded.<br>
+**Patient management** - The doctor will have access to all necessary information associated with his patients.<br>
 
 <br><br>
 
